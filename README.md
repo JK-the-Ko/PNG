@@ -4,8 +4,8 @@
 <h4>
   <a href="https://scholar.google.com/citations?user=NBs5cTMAAAAJ">Jaekyun Ko</a>*,
   <a href="https://scholar.google.com/citations?user=6I9aJxYAAAAJ">Dongjin Kim</a>*,
-  <a href="">Soomin Lee</a>,
-  <a href="">Guanghui Wang</a>,
+  <a href="https://scholar.google.com/citations?user=Z3B180AAAAAJ&hl=en">Soomin Lee</a>,
+  <a href="https://scholar.google.com/citations?user=I_5aoAwAAAAJ&hl=en">Guanghui Wang</a>,
   <a href="https://sites.google.com/view/lliger9/team/taehyunkim">Tae Hyun Kim<sup>&#8224;</sup></a>
 </h4>
 
