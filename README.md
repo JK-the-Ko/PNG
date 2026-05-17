@@ -1,6 +1,6 @@
 <div align="center">
 <img src="assets/logo.png" width="300" style="margin-left: auto; margin-right: auto; display: block;">
-<h1>Diffusion-Based sRGB Real Noise Generation<br>via Prompt-Driven Noise Representation Learning</h1>
+<h1>Diffusion-Based sRGB Real Noise Generation<br>via Prompt-Driven Noise Representation Learning<br>(CVPR 2026 Highlight)</h1>
 
 <h4>
   <a href="https://scholar.google.com/citations?user=NBs5cTMAAAAJ">Jaekyun Ko</a>*,
