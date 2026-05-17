@@ -1,0 +1,45 @@
+target: png.models.lit_classifier.LitClassifier
+
+params: 
+  compile: false                        # Set True to compile the model for faster training/inference.
+
+  # Data configuration
+  data_config: 
+    train: 
+      input_key: LQ                     # Key for input images in the batch.
+      target_key: GT                    # Key for target images in the batch.
+      label_key: label                  # Key for labels in the batch.
+    validate: 
+      input_key: LQ                     # Key for input images in the batch.
+      target_key: GT                    # Key for target images in the batch.
+      label_key: label                  # Key for labels in the batch.
+
+  # Optimizer configuration
+  optimizer_config: 
+    target: torch.optim.Adam
+    params: 
+      lr: !!float 1e-4                  # Learning rate.
+      weight_decay: 1e-4                # Weight decay (L2 penalty).
+      betas: [0.5, 0.9]                 # Coefficients used for computing running averages of gradient and its square.
+      eps: !!float 1e-8                 # Term added to the denominator to improve numerical stability.
+
+  # Scheduler configuration
+  scheduler_config: 
+    target: torch.optim.lr_scheduler.CosineAnnealingLR
+    params: 
+      T_max: 10000                      # Maximum number of iterations.
+      eta_min: !!float 1e-6             # Minimum learning rate.
+
+  # Encoder configuration
+  encoder_config: 
+    ckpt_path: <PATH_TO_CHECKPOINT> # Path to checkpoint.
+    target: png.models.lit_prompt_ae.LitPromptAE
+
+  # Classifier configuration
+  classifier_config: 
+    target: png.archs.classifier.PromptClassifier
+    params: 
+      prompt_type: prompt-ae            # Type of prompt used.
+      prompt_ae_config_path: configs/models/prompt_ae/prompt_ae.yaml
+      channels_g: 48                    # Number of general channels.
+      num_class: 16                     # Number of classes.

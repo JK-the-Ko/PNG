@@ -1,0 +1,24 @@
+dataset: 
+  target: png.datasets.sidd.SIDDSynDataset
+  params:
+    clean_dir: <PATH_TO_DATASET> # Root directory of the dataset.
+    noisy_dir: <PATH_TO_DATASET> # Root directory of the dataset.
+
+    patch_size: 96 # Spatial crop size (square patches: patch_size x patch_size).
+
+    preload: False # If True, preload all images into RAM at initialization.
+    parallel_preload: False # If True and preload=True, use multiprocessing for faster preload.
+    test: False # Set True to disable training-only randomizations.
+    augmentation: True # Apply on-the-fly geometric augmentations.
+
+data_loader: 
+  batch_size: 8 # Number of samples per batch.
+  shuffle: true # If True, shuffle the data at every epoch.
+  num_workers: 20 # Number of subprocesses to use for data loading.
+  drop_last: true # If True, drop the last incomplete batch.
+
+repeat_dataset: 
+  times: 10
+
+batch_transform: 
+  target: png.datasets.batch_transform.IdentityBatchTransform

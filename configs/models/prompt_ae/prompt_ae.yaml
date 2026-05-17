@@ -1,0 +1,65 @@
+target: png.models.lit_prompt_ae.LitPromptAE
+
+params:
+  misc_config:
+    compile: false                        # Set True to compile the model for faster training/inference.
+    weight_l2: !!float 1e-6
+
+  # Data configuration
+  data_config:
+    train:
+      input_key: LQ                     # Key for input images in the batch.
+      target_key: GT                    # Key for target images in the batch.
+    validate:
+      SIDD:
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+      SIDDP:
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+      PolyU:
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+      Nam:
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+
+  # Optimizer configuration
+  optimizer_config: 
+    target: torch.optim.Adam
+    params: 
+      lr: !!float 1e-4                  # Learning rate.
+      weight_decay: 0.                  # Weight decay (L2 penalty).
+      betas: [0.5, 0.9]                 # Coefficients used for computing running averages of gradient and its square.
+      eps: !!float 1e-8                 # Term added to the denominator to improve numerical stability.
+
+  # Loss configuration
+  loss_config: 
+    target: png.losses.basic_loss.L1Loss
+    params: 
+      loss_weight: !!float 1.0
+      reduction: mean
+
+  # Scheduler configuration
+  scheduler_config: 
+    target: torch.optim.lr_scheduler.CosineAnnealingLR
+    params: 
+      T_max: 400000                     # Maximum number of iterations.
+      eta_min: !!float 1e-6             # Minimum learning rate.
+
+  # Encoder configuration
+  encoder_config: 
+    target: png.archs.autoencoder.PromptEncoder
+    params: 
+      input_dim : 3
+      channels_g : 48
+      channels_p : 48
+      kernel_local : 5
+      prompt_size : 256
+
+  # Decoder configuration
+  decoder_config: 
+    target: png.archs.autoencoder.Decoder
+    params: 
+      input_dim: 3                      # Number of input channels.
+      channels_g: 48                    # Number of general channels.
