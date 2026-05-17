@@ -1,0 +1,80 @@
+data:
+  target: png.datasets.data_module.BaseDataModule
+  params:
+    # Path to training set configuration file.
+    train_config: configs/datasets/train/sidd_cm_train.yaml
+    # Path to validation set configuration file.
+    val_config: ['configs/datasets/val/sidd_val.yaml',
+                 'configs/datasets/val/siddplus_val.yaml',
+                 'configs/datasets/val/polyu_val.yaml',
+                 'configs/datasets/val/nam_val.yaml',]
+
+model:
+  # You can set learning rate in the following configuration file.
+  config: configs/models/prompt_cm/prompt_cm.yaml
+  # Path to the checkpoints or weights you want to resume. At the begining, 
+  resume: ~
+
+lightning:
+  seed: ~
+  mode: fit
+  
+  trainer:
+    accelerator: auto # gpu # ddp
+    precision: bf16-mixed # bf16-mixed # 32 # 16-mixed
+    # Indices of GPUs used for training.
+    devices: [0]
+    # Path to save logs and checkpoints.
+    default_root_dir: 
+    # Max number of training steps (batches).
+    max_steps: 200001
+    # Validation frequency in terms of training steps.
+    val_check_interval: 50000 
+    check_val_every_n_epoch: ~
+    log_every_n_steps: 1000
+    # strategy: "ddp_find_unused_parameters_true"
+    # Accumulate gradients from multiple batches so as to increase batch size.
+    # accumulate_grad_batches: 1
+    # clip gradients' global norm : torch.nn.utils.clip_grad_norm_()
+    gradient_clip_val: 0.1
+  
+  callbacks:
+    - target: pytorch_lightning.callbacks.ModelCheckpoint 
+      params: 
+        # Frequency of saving checkpoints.
+        every_n_train_steps: 50000 
+        # save_top_k: 1 # -1
+        save_last: True
+        filename: '{epoch}-{step}'
+        verbose: True
+
+    - target: pytorch_lightning.callbacks.LearningRateMonitor
+      params:
+        logging_interval: 'step'
+        
+    - target: pytorch_lightning.callbacks.RichProgressBar
+      params:
+        leave: True
+
+  loggers:
+    - target: png.models.loggers.LocalImageLogger
+      params:
+       save_dir : logs/
+       name: LocalImageLogger
+       version: prompt_cm
+
+    # Additional logger options (uncomment preferred):
+    # - target: png.models.loggers.TensorBoardLogger
+    #   params:
+    #     save_dir : logs/
+    #     version: name
+
+    # - target: pytorch_lightning.loggers.WandbLogger
+    #   params:
+    #     name: name                 # Run name.
+    #     save_dir : logs/
+    #     log_model: all             # Options: all | True | False.
+    #     entity: entity             # Your W&B entity / team.
+    #     project: project           # Project name on W&B.
+    #     tags: ["tags"]             # List of tag strings.
+    #     notes: notes               # Free-form notes.

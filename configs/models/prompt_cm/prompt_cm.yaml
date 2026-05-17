@@ -1,0 +1,92 @@
+target: png.models.lit_prompt_cm.LitPromptCM
+
+params: 
+  misc_config: 
+    compile: false                       # Set True to compile the model for faster training/inference.
+    visualize_train: true
+    sample_seed: ~
+
+  cm_config: 
+    mu_data: 0.0
+    sigma_data: 0.5
+    sigma_max: 80.0
+    sigma_min: 0.002
+    disc_steps_max: 160
+    disc_steps_min: 10
+    lognormal_mean: -1.1
+    lognormal_std: 2.0
+    weight_schedule: "karras"
+    loss_norm: "lpips"
+    rho: 7.0
+    ema_decay_rate: 0.9999
+
+    ae_raw_std : [0.09, 0.12, 0.12, 0.06, 0.09, 0.06, 0.09, 0.08, 0.14, 0.07, 0.12, 0.05, 0.1, 0.09, 0.06, 0.06, 0.07, 0.05, 0.06, 0.07, 0.06, 0.11, 0.07, 0.08, 0.07, 0.11, 0.12, 0.1, 0.06, 0.07, 0.06, 0.08, 0.11, 0.07, 0.07, 0.07, 0.06, 0.09, 0.08, 0.07, 0.11, 0.09, 0.08, 0.07, 0.06, 0.11, 0.09, 0.62, 0.11, 0.1, 0.07, 0.07, 0.07, 0.1, 0.06, 0.09, 0.07, 0.06, 0.13, 0.08, 0.06, 0.1, 0.13, 0.07, 0.06, 0.11, 0.12, 0.09, 0.06, 0.06, 0.08, 0.11, 0.1, 0.13, 0.13, 0.11, 0.11, 0.07, 0.11, 0.1, 0.06, 0.09, 0.08, 0.06, 0.09, 0.07, 0.07, 0.06, 0.07, 0.12, 0.12, 0.11, 0.06, 0.06, 0.12, 0.09, 0.11, 0.08, 0.07, 0.1, 0.07, 0.12, 0.11, 0.07, 0.13, 0.06, 0.1, 0.18, 0.11, 0.09, 0.08, 0.05, 0.06, 0.11, 0.12, 0.07, 0.11, 0.07, 0.05, 0.06, 0.07, 0.06, 0.08, 0.06, 0.07, 0.05, 0.07, 0.07, 0.11, 0.1, 0.09, 0.09, 0.08, 0.11, 0.08, 0.07, 0.07, 0.11, 0.07, 0.07, 0.06, 0.1, 0.06, 0.06, 0.06, 0.06, 0.09, 0.08, 0.07, 0.1, 0.06, 0.08, 0.07, 0.09, 0.09, 0.12, 0.06, 0.08, 0.08, 0.07, 0.11, 0.12, 0.06, 0.1, 0.1, 0.07, 0.07, 0.06, 0.07, 0.09, 0.07, 0.07, 0.08, 0.08, 0.07, 0.06, 0.11, 0.11, 0.13, 0.1, 0.06, 0.09, 0.12, 0.07, 0.07, 0.07, 0.08, 0.08, 0.05, 0.07, 0.07, 0.08]
+    ae_raw_mean : [-0.0, -0.01, -0.0, 0.0, -0.0, 0.0, -0.01, 0.01, -0.0, 0.0, -0.01, 0.0, -0.01, -0.01, 0.0, 0.0, 0.0, 0.01, 0.01, -0.0, 0.01, -0.01, 0.0, 0.0, -0.01, -0.02, -0.01, -0.01, 0.01, 0.0, 0.01, 0.0, -0.0, 0.01, 0.01, 0.0, 0.0, -0.01, 0.01, 0.01, -0.01, -0.01, -0.01, 0.01, 0.01, -0.01, -0.0, 0.04, -0.01, 0.0, 0.01, 0.01, 0.0, -0.01, -0.0, -0.01, 0.01, 0.01, -0.01, 0.01, 0.0, -0.01, -0.01, 0.0, 0.0, -0.01, -0.01, -0.0, 0.01, 0.01, -0.02, -0.02, -0.01, -0.01, 0.03, -0.01, -0.01, 0.0, -0.01, -0.01, 0.01, 0.0, 0.01, 0.01, -0.01, 0.01, 0.01, 0.01, 0.01, -0.01, -0.01, -0.01, 0.01, 0.01, -0.01, -0.02, -0.01, 0.0, 0.0, -0.01, 0.01, -0.01, -0.01, 0.0, 0.01, 0.01, -0.02, -0.01, -0.01, -0.01, 0.0, 0.01, 0.01, -0.01, -0.01, -0.0, -0.02, 0.0, 0.03, 0.01, 0.01, 0.0, 0.0, 0.01, 0.01, 0.0, 0.04, 0.01, -0.01, -0.01, 0.01, 0.0, 0.01, -0.01, 0.0, 0.01, 0.0, -0.01, 0.0, -0.0, 0.0, -0.01, 0.0, 0.01, 0.01, 0.01, 0.01, 0.0, 0.0, -0.0, 0.01, 0.01, 0.01, -0.0, -0.01, -0.01, 0.01, 0.0, 0.0, 0.01, -0.01, -0.01, 0.01, -0.01, -0.01, 0.0, 0.01, 0.0, 0.01, -0.01, 0.01, -0.0, -0.03, -0.0, 0.01, 0.03, -0.0, -0.01, -0.02, -0.01, 0.01, -0.01, -0.01, 0.01, 0.01, 0.01, -0.0, -0.01, 0.01, 0.01, 0.0, 0.01]
+
+  # Data configuration
+  data_config: 
+    train: 
+      input_key: LQ                     # Key for input images in the batch.
+      target_key: GT                    # Key for target images in the batch.
+    validate: 
+      SIDD: 
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+      SIDDP: 
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+      PolyU: 
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+      Nam: 
+        input_key: LQ                   # Key for input images in the batch.
+        target_key: GT                  # Key for target images in the batch.
+
+  # Optimizer configuration
+  optimizer_config: 
+    target: torch.optim.RAdam
+    params: 
+      lr: !!float 2e-4                  # Learning rate.
+      weight_decay: 0.                  # Weight decay (L2 penalty).
+      betas: [0.9, 0.999]               # Coefficients used for computing running averages of gradient and its square.
+      eps: !!float 1e-8                 # Term added to the denominator to improve numerical stability.
+
+  model_config: 
+    target: png.archs.prompt_dit.PromptDiT
+    params: 
+      depth: 8
+      hidden_size: 384
+      patch_size: 1
+      num_heads: 6
+
+      input_size: 32
+      in_channels: 192
+      out_channels: 192
+      prompt_in_channels: [3072, 3072, 768, 384, 192, 48]
+      prompt_out_channels: [128, 128, 32, 16, 16, 64]
+
+      mlp_ratio: 4.0
+      attn_drop: 0.0
+      dropout: 0.1
+      prompt_drop: 0.0
+
+  ae_config: 
+    target: png.models.lit_prompt_ae.LitPromptAE
+
+    ckpt_path: <PATH_TO_CHECKPOINT> # Path to checkpoint.
+    # Encoder configuration
+    encoder_config: 
+      target: png.archs.autoencoder.PromptEncoder
+      params: 
+        input_dim : 3
+        channels_g : 48
+        channels_p : 48
+        kernel_local : 5
+        prompt_size : 256
+
+    # Decoder configuration
+    decoder_config: 
+      target: png.archs.autoencoder.Decoder
+      params: 
+        input_dim: 3                    # Number of input channels.
+        channels_g: 48                  # Number of general channels.

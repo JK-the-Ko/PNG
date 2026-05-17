@@ -1,0 +1,31 @@
+data:
+  target: png.datasets.data_module.BaseDataModule
+  params:
+    # Path to training set configuration file.
+    train_config: configs/datasets/train/sidd_cm_train.yaml
+    # Path to validation set configuration file.
+    val_config: ['configs/datasets/val/sidd_val.yaml',
+                 'configs/datasets/val/siddplus_val.yaml',
+                 'configs/datasets/val/polyu_val.yaml',
+                 'configs/datasets/val/nam_val.yaml',]
+
+model:
+  # You can set learning rate in the following configuration file.
+  config: configs/models/prompt_cm/prompt_cm.yaml
+  # Path to the checkpoints or weights you want to resume. At the begining, 
+  pl_resume: <PATH_TO_CHECKPOINT> # Path to checkpoint.
+
+lightning:
+  seed: 123
+  mode: validate
+  
+  trainer:
+    accelerator: auto
+    precision: 32
+    # Indices of GPUs used for training.
+    devices: [0] 
+
+  callbacks:
+    - target: pytorch_lightning.callbacks.RichProgressBar
+      params:
+        leave: True
