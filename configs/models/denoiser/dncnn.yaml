@@ -35,11 +35,12 @@ params:
 
   # Loss configuration
   loss_config: 
-    target: png.utils.basic_loss.L1Loss
+    target: png.losses.basic_loss.L1Loss
     params: 
       loss_weight: !!float 1.0
       reduction: mean
 
+  # Denoiser configuration
   denoiser_config: 
     target: png.archs.dncnn.DnCNN
     params: 
