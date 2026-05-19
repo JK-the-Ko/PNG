@@ -66,7 +66,7 @@ Download the pretrained checkpoints from the links below. After downloading, upd
 | :---: | :------: | :------- | :------------ |
 | Prompt Autoencoder | [Download](https://drive.google.com/file/d/1Bz-mHFFGzju1elzS6JV3XDdA45mryqWU/view?usp=drive_link) | Prompt representation extraction and validation | `configs/val/prompt_ae/val_lit_prompt_ae.yaml` |
 | Prompt-Driven Noise Generator | [Download](https://drive.google.com/file/d/1Ry46H1BjgKGPLKCNMj89VtmS9ouRHWUS/view?usp=drive_link) | Noise generation and validation | `configs/val/prompt_cm/val_lit_prompt_cm.yaml` |
-| Denoiser | [Download](https://drive.google.com/file/d/1xI_uMNKiD3DsSqIWuodkbXpPYhCbmnPt/view?usp=drive_link) | Denoising evaluation | `configs/val/denoiser/val_lit_denoising.yaml` |
+| Denoiser | [Download](https://drive.google.com/file/d/1_jshAtciBa_-_2HLTsbxVvk4CGZMT--h/view?usp=sharing) | Denoising evaluation | `configs/val/denoiser/val_lit_denoising.yaml` |
 
 Example checkpoint configuration:
 
