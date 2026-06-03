@@ -13,6 +13,7 @@
 <b><sub><sup>* Equal contribution.  <sup>&#8224;</sup> Corresponding author.</sup></sub></b>
 
 [![arXiv](https://img.shields.io/badge/Arxiv-📄Paper-8A2BE2)](https://arxiv.org/abs/2603.04870)
+[![CVPR](https://img.shields.io/badge/CVPR-📄Paper-8A2BE2)](https://openaccess.thecvf.com/content/CVPR2026/html/Ko_Diffusion-Based_sRGB_Real_Noise_Generation_via_Prompt-Driven_Noise_Representation_Learning_CVPR_2026_paper.html)
 
 </div>
 
@@ -181,10 +182,12 @@ For detailed options related to training, datasets, model settings, logging, and
 Please cite us if our work is useful for your research:
 
 ```bibtex
-@article{ko2026diffusion,
-  title   = {Diffusion-Based sRGB Real Noise Generation via Prompt-Driven Noise Representation Learning},
-  author  = {Ko, Jaekyun and Kim, Dongjin and Lee, Soomin and Wang, Guanghui and Kim, Tae Hyun},
-  journal = {arXiv preprint arXiv:2603.04870},
-  year    = {2026}
+@InProceedings{Ko_2026_CVPR,
+    author    = {Ko, Jaekyun and Kim, Dongjin and Lee, Soomin and Wang, Guanghui and Kim, Tae Hyun},
+    title     = {Diffusion-Based sRGB Real Noise Generation via Prompt-Driven Noise Representation Learning},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {35956-35966}
 }
 ```
